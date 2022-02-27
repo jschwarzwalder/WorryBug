@@ -90,7 +90,7 @@ public class WorryBugGameManager : MonoBehaviour
                 timeLeft = affirmationDisplayTimeAmount;
                 worryTimeDisplay.gameObject.SetActive(true);
                 index++;
-                worryText.text = "Remember:";
+                worryText.text = "Thank you for feeding the Worry Bug.\nRemember:";
             }
             else if (!rephraseActive && index >= affirmations.Count && timeLeft <= 0) {
                 gameRunning = false;
