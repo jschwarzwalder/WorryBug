@@ -35,27 +35,36 @@ public class WorryBugGameManager : MonoBehaviour
     void Update()
     {
         if(gameRunning && timeLeft > 0){
+            worryTimeDisplay.gameObject.SetActive(true);
             timeLeft -= Time.deltaTime;
                         int minutes = ((int)timeLeft) / 60;
-            float seconds = (timeLeft - minutes ) * 60;
+            float seconds = timeLeft - minutes  * 60;
             worryTimeDisplay.text = string.Format("{0}:{1}", minutes, seconds.ToString("00.0"));
 
-
+        } else if (gameRunning && timeLeft <=0){
+            
+        
+        
         } else {
             worryTimeDisplay.text = "0";
+            worryTimeDisplay.gameObject.SetActive(false);
         }
         
-        if(Input.GetKeyDown("enter")) {
+        if(Input.GetKeyDown(KeyCode.Return)) {
             if (!gameRunning){
             timeLeft = worryTimeAmount;
+            worryTimeDisplay.gameObject.SetActive(true);
             worryText.text = "Feed the Worry Bug!";
             worryinput.Show("What are you worried about?", "Enter text here");
             gameRunning = true;
             } 
             else if (gameRunning){
                 string worry = worryinput.getInput();
-                worries.Add(worry);
-                worryText.text = worry; 
+                
+                if (worry != ""){
+                    worries.Add(worry);
+                    worryText.text = worry; 
+                }
             }
         } else if(!gameRunning)  {
             gameRunning = false;

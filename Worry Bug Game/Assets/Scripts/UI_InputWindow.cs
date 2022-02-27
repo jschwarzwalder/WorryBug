@@ -36,6 +36,9 @@ public class UI_InputWindow : MonoBehaviour
     }
 
     public string getInput(){
-        return inputField.text;
+        string input = inputField.text;
+        inputField.text = "";
+        inputField.Select();
+        return input;
     }
 }

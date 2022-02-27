@@ -950,7 +950,7 @@ GameObject:
   - component: {fileID: 967856417}
   - component: {fileID: 967856416}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Worry Bug
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
