@@ -15,6 +15,7 @@ public class WorryBugGameManager : MonoBehaviour
     private TextMeshProUGUI worryText;
     private TextMeshProUGUI worryTimeDisplay;
     private UI_InputWindow worryinput;
+    private UI_InputWindow rephraseWorry;
 
     bool gameRunning = false;
 
@@ -27,7 +28,9 @@ public class WorryBugGameManager : MonoBehaviour
         worryText = transform.Find("WorryText").GetComponent<TextMeshProUGUI>();        
         worryTimeDisplay = transform.Find("WorryTimer").GetComponent<TextMeshProUGUI>();
         worryinput = transform.Find("UI_TextInput").GetComponent<UI_InputWindow>();
+        rephraseWorry = transform.Find("RephraseWorry").GetComponent<UI_InputWindow>();
         worryinput.Hide();
+        rephraseWorry.Hide();
  
     }
 
@@ -42,7 +45,7 @@ public class WorryBugGameManager : MonoBehaviour
             worryTimeDisplay.text = string.Format("{0}:{1}", minutes, seconds.ToString("00.0"));
 
         } else if (gameRunning && timeLeft <=0){
-            
+            worryinput.Hide();
         
         
         } else {
