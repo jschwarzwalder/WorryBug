@@ -1,26 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEngine.UI;
 using UnityEngine;
 
-public class UI_Input : MonoBehaviour
+public class UI_InputWindow : MonoBehaviour
 {
 
-    // private Button_UI okBtn;
-    // private Button_UI cancelBtn;
 
-    private TextMeshProUGUI titleText;
+    private Text titleText;
     private TMP_InputField inputField;
 
     // Start is called before the first frame update
     void Awake()
-    {
-        
-       // okBtn = transform.Find("okBtn").GetComponent<Button_UI>();
-       // cancelBtn =transform.Find("cancelBtn").GetComponent<Button_UI>();
-        titleText = transform.Find("titleText").GetComponent<TextMeshProUGUI>();
+    {        
+        titleText = transform.Find("titleText").GetComponent<Text>();
         inputField = transform.Find("inputField").GetComponent<TMP_InputField>();
-        Hide();
+
     }
 
     // Update is called once per frame
@@ -37,5 +33,9 @@ public class UI_Input : MonoBehaviour
 
     public void Hide(){
         gameObject.SetActive(false);
+    }
+
+    public string getInput(){
+        return inputField.text;
     }
 }
