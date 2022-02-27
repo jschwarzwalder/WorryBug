@@ -18,8 +18,10 @@ public class WorryBugGameManager : MonoBehaviour
     private UI_InputWindow rephraseWorry;
 
     bool gameRunning = false;
+    int index; 
 
     private List<string> worries = new List<string>{};
+     private List<string> affirmations = new List<string>{};
 
     // Start is called before the first frame update
     void Start()
@@ -46,11 +48,19 @@ public class WorryBugGameManager : MonoBehaviour
 
         } else if (gameRunning && timeLeft <=0){
             worryinput.Hide();
-        
+            worryTimeDisplay.text = "Time's Up";
+            if(worries.Count > 0){
+                worryText.text = "Choose to Send your worry to the Bug as is or rephrase your worry into a positive statement";
+                worryTimeDisplay.text = "Example: I can do this";
+                string worry = worries[index];
+                rephraseWorry.Show(worry, "Rephrase into a positive statment");
+            }
+            
         
         } else {
             worryTimeDisplay.text = "0";
             worryTimeDisplay.gameObject.SetActive(false);
+            
         }
         
         if(Input.GetKeyDown(KeyCode.Return)) {
@@ -61,13 +71,27 @@ public class WorryBugGameManager : MonoBehaviour
             worryinput.Show("What are you worried about?", "Enter text here");
             gameRunning = true;
             } 
-            else if (gameRunning){
+            else if (gameRunning && timeLeft > 0){
                 string worry = worryinput.getInput();
                 
                 if (worry != ""){
                     worries.Add(worry);
                     worryText.text = worry; 
                 }
+            } 
+            else if (gameRunning && timeLeft <=0 && index < worries.Count){
+                string affirmation = rephraseWorry.getInput();
+                
+                if (affirmation != ""){
+                    affirmations.Add(affirmation);
+                    index += 1;
+                    if (index >= worries.Count){
+                        gameRunning = false;
+                        rephraseWorry.Hide();
+                    } 
+                }
+                
+                
             }
         } else if(!gameRunning)  {
             gameRunning = false;
