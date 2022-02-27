@@ -18,6 +18,7 @@ public class WorryBugGameManager : MonoBehaviour
     private UI_InputWindow rephraseWorry;
 
     bool gameRunning = false;
+    bool rephraseActive = false;
     int index; 
 
     private List<string> worries = new List<string>{};
@@ -33,6 +34,7 @@ public class WorryBugGameManager : MonoBehaviour
         rephraseWorry = transform.Find("RephraseWorry").GetComponent<UI_InputWindow>();
         worryinput.Hide();
         rephraseWorry.Hide();
+        rephraseActive = false;
  
     }
 
@@ -49,29 +51,31 @@ public class WorryBugGameManager : MonoBehaviour
         } else if (gameRunning && timeLeft <=0){
             worryinput.Hide();
             worryTimeDisplay.text = "Time's Up";
-            if(worries.Count > 0){
-                worryText.text = "Choose to Send your worry to the Bug as is or rephrase your worry into a positive statement";
-                worryTimeDisplay.text = "Example: I can do this";
-                string worry = worries[index];
-                rephraseWorry.Show(worry, "Rephrase into a positive statment");
-            }
+            rephraseActive = true;
+            gameRunning = false;
+            string worry = worries[index];
+            rephraseWorry.Show(worry, "Rephrase into a positive statment");
             
         
         } else {
-            worryTimeDisplay.text = "0";
-            worryTimeDisplay.gameObject.SetActive(false);
-            
+            if (!rephraseActive){
+                worryTimeDisplay.text = "0";
+                worryTimeDisplay.gameObject.SetActive(false);
+            }  else if(rephraseActive && worries.Count > 0 ){
+                worryText.text = "Choose to Send your worry to the Bug as is or rephrase your worry into a positive statement";
+                worryTimeDisplay.text = "Example: I can do this";
+                
+            }
         }
-        
-        if(Input.GetKeyDown(KeyCode.Return)) {
-            if (!gameRunning){
+        if (Input.GetKeyDown(KeyCode.Return)) {
+            if (!gameRunning && !rephraseActive){
             timeLeft = worryTimeAmount;
             worryTimeDisplay.gameObject.SetActive(true);
             worryText.text = "Feed the Worry Bug!";
             worryinput.Show("What are you worried about?", "Enter text here");
             gameRunning = true;
             } 
-            else if (gameRunning && timeLeft > 0){
+            else if (gameRunning && timeLeft > 0 && !rephraseActive){
                 string worry = worryinput.getInput();
                 
                 if (worry != ""){
@@ -79,7 +83,7 @@ public class WorryBugGameManager : MonoBehaviour
                     worryText.text = worry; 
                 }
             } 
-            else if (gameRunning && timeLeft <=0 && index < worries.Count){
+            else if (rephraseActive){
                 string affirmation = rephraseWorry.getInput();
                 
                 if (affirmation != ""){
@@ -87,13 +91,14 @@ public class WorryBugGameManager : MonoBehaviour
                     index += 1;
                     if (index >= worries.Count){
                         gameRunning = false;
+                        rephraseActive = false;
                         rephraseWorry.Hide();
                     } 
                 }
                 
                 
             }
-        } else if(!gameRunning)  {
+        } else if(!gameRunning && !rephraseActive)  {
             gameRunning = false;
             worryinput.Hide();
             worryTimeDisplay.gameObject.SetActive(false);
@@ -101,3 +106,6 @@ public class WorryBugGameManager : MonoBehaviour
         }
     }
 }
+
+
+
