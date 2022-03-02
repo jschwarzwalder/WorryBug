@@ -1,28 +1,58 @@
-+ Store Answers
-+ Timer
-+ Display Individually
-+ Take in new input
+X  Store Answers
+X Timer
+X  Display Individually
+X  Take in new input
 
 Can you control this? Yes No
 What small step can you take?
 
-Feed to Worry Bug
-Play Eating Sound
+X Feed to Worry Bug
+X Play Eating Sound
 
-+ Rephrase as a positive
-Play Eating Sound then Burp
+X  Rephrase as a positive
+X Play Eating Sound then Burp
 
-Write small step one can do 
+ Write small step one can do 
 Play Success Sound
 
-At end display credits rotating of Positive things then Small Steps to take. 
+ At end display credits rotating of Positive things then Small Steps to take. 
 
 Assets
-+ Worry Bug
-Font
-Background for Display
-Eating Sound
-Burp Sound
+X  Worry Bug
+X Font
+~ Background for Display
+X Eating Sound
+X Burp Sound
 Success Sound
 
-Peaceful background Music?
+X Peaceful background Music?
+
+
+------
+Worry Monster
+
+Feed the Worry Monster all the things that you are worried about. All the Negative Self Talk. 
+Text Input
+Set timer for 5 minutes
+
+Thank the Worry Monster for eating all your worries.
+
+To defeat the Worry Monster
+
+For each String Write a "Is this true? " Rewrite this worry as a positive statement. 
+write new positive thoughts to replace the negative ones
+
+Display all of the new inputs
+
+Encourage them to read them outline or create a piece of artwork from it. 
+
+Defeat the Toxic Possitivity Monster 
+
+https://positivepsychology.com/challenging-automatic-thoughts-positive-thoughts-worksheets/
+
+IF this was hard, or you were not able to write a new positive thought, we encourage you to talk to someone about it. 
+Worries are our brains way of trying to keep us safe. It is normal and healthy to have a few worries, but if this keeps you from being able to fall asleep or complete basic daily tasks, talking to a professional can help you find peace. 
+
+Text TALK to 38255
+https://need2text.com/
+
